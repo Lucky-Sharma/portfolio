@@ -11,8 +11,7 @@ const ProjectData = [
   },
   {
     gitlink: "https://github.com/Lucky-Sharma/phonebooknew",
-    uploadkink:
-      "https://vercel.com/lucky-sharmas-projects-0018ad18/phonebooknew",
+    uploadkink: "https://phonebooknew.vercel.app/",
     Heading: "Phone book web application",
     detail: "A phonebook web app with full CRUD, search, and sort features.",
     techStack:
