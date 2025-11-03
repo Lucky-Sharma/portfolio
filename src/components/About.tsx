@@ -8,7 +8,7 @@ export const About = () => {
       </div>
       <div className="h-screen flex justify-between">
         <div className="max-w-xl flex flex-col text-[#8791af] text-justify">
-          <p className="flex text-xl">
+          <p className="flex text-lg sm:text-xl">
             I am currently a Software Development Engineer at Gamma Edge,
             working in the Software development sector under MERN team.
             Previously, I have worked as a Software Engineer Intern at DigiChum,
@@ -16,10 +16,10 @@ export const About = () => {
             I have a strong foundation in computer science principles and a
             passion for building efficient and scalable software solutions.
           </p>
-          <p className="mt-4 text-xl">
+          <p className="mt-4 text-lg sm:text-xl">
             Here are a some technologies I have been working with:
           </p>
-          <div className="grid grid-cols-2 text-xl">
+          <div className="grid grid-cols-2 text-lg sm:text-xl">
             <div>
               <span className="p-1 m-3 text-[#56ddc1]">▹</span>
               <span>JavaScript</span>
@@ -50,15 +50,15 @@ export const About = () => {
             </div>
             <div>
               <span className="p-1 m-3 text-[#56ddc1]">▹</span>
-              <span>AWS(S3,EC2,ECR,cloudfront)</span>
+              <span>S3,EC2,ECR,cloudfront</span>
             </div>
           </div>
-          <span className="mt-5 text-xl">
+          <span className="mt-5 text-lg sm:text-xl">
             Outside of work, I'm interested in following the developments of
             science , technologies and world affairs. I also enjoy reading.
           </span>
         </div>
-        <div className="hidden sm:block">
+        <div className="hidden sm:block m-7">
           <img
             src={pic}
             alt="profile pic"
