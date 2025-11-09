@@ -50,7 +50,8 @@ export const About = () => {
             </div>
             <div>
               <span className="p-1 m-3 text-[#56ddc1]">▹</span>
-              <span>S3,EC2,ECR,cloudfront</span>
+              <span>AWS</span>
+              <span className="opacity-0 sm: opacity-100">(S3,EC2,ECR,cloudfront)</span>
             </div>
           </div>
           <span className="mt-5 text-lg sm:text-xl">

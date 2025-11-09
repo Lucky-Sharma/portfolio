@@ -1,11 +1,8 @@
-// import github from "../assets/github.svg";
-// import linkedin from "../assets/linkedin.svg";
-// import twitterX from "../assets/twitter-x.svg";
 export const Nav = () => {
   return (
     <div className="flex justify-between sticky top-0 z-50 bg-[#0a192f] p-6 px-1 items-center">
       <div className="hidden md:flex gap-8 font-bold ">
-        <label>Lucky Sharna</label>
+        <label>Lucky Sharma</label>
         <a href="#Home" className="cursor-pointer">
           <label className="cursor-pointer">Home</label>
         </a>

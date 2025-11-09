@@ -12,10 +12,10 @@ export const Home = () => {
           I Create stuff sometimes.
         </div>
         <div className="text-base sm:text-xl max-w-[35rem] mt-2 text-[#5e6985] leading-relaxed px-2">
-          I'm a software engineer from Madhya Pradesh, India. I'm fascinated by
-          large-scale, high-impact products and wants to contributed to major
-          feature launches in industry-leading services as well as apps that
-          have 100M+ installs.
+          I'm a software engineer from Madhya Pradesh, India. I love building
+          things that scale — products and features that reach millions of
+          people and make a real impact. I'm always excited to work on apps that
+          grow fast and shape how people interact with technology.
         </div>
         <a href="mailto:luckysharmab1@gmail.com ">
           <button className="border-[#64ffda] text-[#64ffda] border-2 rounded-sm p-4 m-3 flex gap-4 font-extrabold bg-transparent hover:cursor-pointer hover:bg-[#64ffda]/10">
