@@ -38,7 +38,7 @@ export const Projects = () => {
   return (
     <div className="w-screen">
       <div className="flex items-center w-full pb-4">
-        <div className="font-bold text-4xl text-[#c6d0f0] ">/experience</div>
+        <div className="font-bold text-4xl text-[#c6d0f0] ">/projects</div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3 "></div>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl mx-auto px-4 mt-15">

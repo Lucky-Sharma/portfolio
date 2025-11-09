@@ -15,7 +15,7 @@ export const CompanyDetails = ({
     <div>
       <div>
         <div className="flex flex-col text-left sm:flex sm:flex-row gap-1">
-          <div className="text-xl sm:text-3xl font-bold mb-2">{companyPosition}@</div>
+          <div className="text-xl sm:text-3xl font-bold mb-2">{companyPosition} @</div>
           <div className="text-xl sm:text-3xl font-bold mb-2 text-[#56ddc1]">{companyName}</div>
         </div>
         <div>

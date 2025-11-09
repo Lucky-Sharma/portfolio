@@ -35,64 +35,72 @@ const data: dataType[] = [
 
 export const Experience = () => {
   const [currentSelect, setCurrentSelect] = useState<number>(1);
+
   return (
     <div className="h-full w-full">
       <div className="flex items-center w-full pb-4">
         <div className="font-bold text-4xl text-[#c6d0f0]">/experience</div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3"></div>
       </div>
-      <div className="flex flex-col md:flex-row justify-start gap-10 mt-10 h-auto md:h-screen">
-        <div className=" relative flex flex-col w-full md:w-1/3 md:w-90">
+
+      <div className="flex flex-col md:flex-row justify-start gap-6 sm:gap-10 mt-6 sm:mt-10 min-h-[500px]">
+        <div className="relative flex flex-col w-full md:w-1/3">
           <div
-            className={`absolute right-0 h-5 sm:h-16 w-[2px] bg-[#56ddc1] transition-transform duration-500 ease-in-out 
-    ${
-      currentSelect === 1 ? "translate-y-8 sm:translate-y-16 " : "translate-y-0"
-    }`}
+            className={`absolute right-0 h-12 sm:h-16 w-0.5 bg-[#56ddc1] transition-transform duration-300 ease-in-out 
+              ${currentSelect === 1 ? "translate-y-14" : "translate-y-1"}`}
           />
 
           <button
-            onClick={() => {
-              setCurrentSelect(2);
-            }}
-            className={`text-left text-lg sm:text-xl p-10 py-2  cursor-pointer hover:bg-gray-800 transition-all duration-300 ease-in-out ${
-              currentSelect == 2 ? "text-[#56ddc1]" : "text-[#8791af]"
-            }`}
+            onClick={() => setCurrentSelect(2)}
+            className={`text-left text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 my-1 rounded-md cursor-pointer 
+              hover:bg-gray-800/50 transition-all duration-300 ease-in-out 
+              ${
+                currentSelect === 2
+                  ? "text-[#56ddc1] bg-gray-800/40"
+                  : "text-[#8791af]"
+              }`}
           >
             Gamma Edge PVT LTD.
           </button>
           <button
-            onClick={() => {
-              setCurrentSelect(1);
-            }}
-            className={`text-left text-lg sm:text-xl p-10 py-2  cursor-pointer hover:bg-gray-800 transition-all  duration-300 ease-in-out ${
-              currentSelect == 1 ? "text-[#56ddc1]" : "text-[#8791af]"
-            }`}
+            onClick={() => setCurrentSelect(1)}
+            className={`text-left text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 my-1 rounded-md cursor-pointer 
+              hover:bg-gray-800/50 transition-all duration-300 ease-in-out 
+              ${
+                currentSelect === 1
+                  ? "text-[#56ddc1] bg-gray-800/40"
+                  : "text-[#8791af]"
+              }`}
           >
             DigiChum PVT LTD.
           </button>
         </div>
-        <div className="relative w-full overflow-visible md:overflow-hidden min-h-[300px] mt-4 md:mt-0">
-          {data.map((item) => {
-            const isActive = item.id === currentSelect;
 
-            const cls = isActive
-              ? "relative md:absolute md:top-0 md:left-0 z-10 opacity-100 translate-x-0"
-              : "absolute top-0 left-0 z-0 opacity-0 -translate-x-full pointer-events-none";
+        <div className="relative w-full mt-4 md:mt-0">
+          <div className="relative w-full min-h-[300px]">
+            {data.map((item) => {
+              const isActive = item.id === currentSelect;
 
-            return (
-              <div
-                key={item.id}
-                className={`w-full transition-all duration-700 ease-in-out transform ${cls}`}
-              >
-                <CompanyDetails
-                  companyPosition={item.companyPosition}
-                  companyName={item.companyName}
-                  dates={item.dates}
-                  details={item.details}
-                />
-              </div>
-            );
-          })}
+              return (
+                <div
+                  key={item.id}
+                  className={`absolute w-full transition-all duration-300 ease-in-out transform
+                    ${
+                      isActive
+                        ? "opacity-100 translate-x-0 visible"
+                        : "opacity-0 -translate-x-4 invisible"
+                    }`}
+                >
+                  <CompanyDetails
+                    companyPosition={item.companyPosition}
+                    companyName={item.companyName}
+                    dates={item.dates}
+                    details={item.details}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
