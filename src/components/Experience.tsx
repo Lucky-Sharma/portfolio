@@ -1,5 +1,5 @@
 import { CompanyDetails } from "./CompanyDetails";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 interface dataType {
   id: number;
   companyPosition: string;
@@ -35,37 +35,51 @@ const data: dataType[] = [
 
 export const Experience = () => {
   const [currentSelect, setCurrentSelect] = useState<number>(1);
+  const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
+  const [indicatorStyle, setIndicatorStyle] = useState({
+    left: 0,
+    width: 0,
+    top: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    const activeTab = tabsRef.current[currentSelect - 1];
+    if (activeTab) {
+      setIndicatorStyle({
+        left: activeTab.offsetLeft,
+        width: activeTab.offsetWidth,
+        top: activeTab.offsetTop,
+        height: activeTab.offsetHeight,
+      });
+    }
+  }, [currentSelect]);
 
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full px-4 sm:px-10">
       <div className="flex items-center w-full pb-4">
-        <div className="font-bold text-4xl text-[#c6d0f0]">/experience</div>
+        <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0] whitespace-nowrap">/experience</div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3"></div>
       </div>
 
       <div className="flex flex-col md:flex-row justify-start gap-6 sm:gap-10 mt-6 sm:mt-10 min-h-[500px]">
-        <div className="relative flex flex-col w-full md:w-1/3">
+        <div className="relative flex md:flex-col overflow-x-auto md:overflow-visible w-full md:w-1/3 border-b md:border-b-0 md:border-l border-gray-700 md:pl-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          {/* Desktop Indicator - Vertical */}
           <div
-            className={`absolute right-0 h-12 sm:h-16 w-0.5 bg-[#56ddc1] transition-transform duration-300 ease-in-out 
-              ${currentSelect === 1 ? "translate-y-14" : "translate-y-1"}`}
+            className="absolute left-0 w-0.5 bg-[#56ddc1] transition-all duration-300 ease-in-out hidden md:block"
+            style={{ top: indicatorStyle.top, height: indicatorStyle.height }}
+          />
+           {/* Mobile Indicator - Horizontal */}
+           <div
+            className="absolute bottom-0 h-0.5 bg-[#56ddc1] transition-all duration-300 ease-in-out block md:hidden"
+            style={{ left: indicatorStyle.left, width: indicatorStyle.width }}
           />
 
           <button
-            onClick={() => setCurrentSelect(2)}
-            className={`text-left text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 my-1 rounded-md cursor-pointer 
-              hover:bg-gray-800/50 transition-all duration-300 ease-in-out 
-              ${
-                currentSelect === 2
-                  ? "text-[#56ddc1] bg-gray-800/40"
-                  : "text-[#8791af]"
-              }`}
-          >
-            Gamma Edge PVT LTD.
-          </button>
-          <button
+            ref={(el) => { tabsRef.current[0] = el; }}
             onClick={() => setCurrentSelect(1)}
-            className={`text-left text-base sm:text-lg px-4 sm:px-6 py-3 sm:py-4 my-1 rounded-md cursor-pointer 
-              hover:bg-gray-800/50 transition-all duration-300 ease-in-out 
+            className={`shrink-0 md:shrink text-center md:text-left text-xs sm:text-base px-3 md:px-6 py-3 md:py-4 rounded-t-md md:rounded-md cursor-pointer 
+              hover:bg-gray-800/50 transition-all duration-300 ease-in-out whitespace-nowrap
               ${
                 currentSelect === 1
                   ? "text-[#56ddc1] bg-gray-800/40"
@@ -73,6 +87,19 @@ export const Experience = () => {
               }`}
           >
             DigiChum PVT LTD.
+          </button>
+          <button
+            ref={(el) => { tabsRef.current[1] = el; }}
+            onClick={() => setCurrentSelect(2)}
+            className={`shrink-0 md:shrink text-center md:text-left text-xs sm:text-base px-3 md:px-6 py-3 md:py-4 rounded-t-md md:rounded-md cursor-pointer 
+              hover:bg-gray-800/50 transition-all duration-300 ease-in-out whitespace-nowrap
+              ${
+                currentSelect === 2
+                  ? "text-[#56ddc1] bg-gray-800/40"
+                  : "text-[#8791af]"
+              }`}
+          >
+            Gamma Edge PVT LTD.
           </button>
         </div>
 
@@ -87,8 +114,8 @@ export const Experience = () => {
                   className={`absolute w-full transition-all duration-300 ease-in-out transform
                     ${
                       isActive
-                        ? "opacity-100 translate-x-0 visible"
-                        : "opacity-0 -translate-x-4 invisible"
+                        ? "opacity-100 translate-x-0 visible relative"
+                        : "opacity-0 -translate-x-4 invisible absolute top-0"
                     }`}
                 >
                   <CompanyDetails

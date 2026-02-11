@@ -36,21 +36,22 @@ const ProjectData = [
 ];
 export const Projects = () => {
   return (
-    <div className="w-screen">
+    <div className="w-full px-4 sm:px-10">
       <div className="flex items-center w-full pb-4">
-        <div className="font-bold text-4xl text-[#c6d0f0] ">/projects</div>
+        <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0] ">/projects</div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3 "></div>
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl mx-auto px-4 mt-15">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto mt-10">
         {ProjectData.map((card, index) => (
-          <ProjectCard
-            key={index}
-            gitlink={card.gitlink}
-            uploadkink={card.uploadkink}
-            Heading={card.Heading}
-            detail={card.detail}
-            techStack={card.techStack}
-          />
+          <div key={index} className="flex justify-center">
+             <ProjectCard
+                gitlink={card.gitlink}
+                uploadkink={card.uploadkink}
+                Heading={card.Heading}
+                detail={card.detail}
+                techStack={card.techStack}
+              />
+          </div>
         ))}
       </div>
     </div>
