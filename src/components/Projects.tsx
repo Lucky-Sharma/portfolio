@@ -1,59 +1,69 @@
 import { ProjectCard } from "./ProjectCard";
+import { useEffect, useState } from "react";
 
-const ProjectData = [
-  {
-    gitlink: "https://github.com/Lucky-Sharma/Blogging-web-application",
-    uploadkink: "https://blogging-web-application-six.vercel.app/",
-    Heading: "Blogging-web-applicationBlogging-web-application",
-    detail:
-      "A blogging web app built with React, Hono, and PostgreSQL, styled using Tailwind CSS and TypeScript.",
-    techStack: "React , Hono, PostgreSQL, TailwindCSS , TypeScript",
-  },
-  {
-    gitlink: "https://github.com/Lucky-Sharma/phonebooknew",
-    uploadkink: "https://phonebooknew.vercel.app/",
-    Heading: "Phone book web application",
-    detail: "A phonebook web app with full CRUD, search, and sort features.",
-    techStack:
-      "React, TypeScript, Node.js, Express.js, Prisma ORM, Material UI, Redux ,Cloudinaryt",
-  },
-  {
-    gitlink: "https://github.com/Lucky-Sharma/employee-management-system",
-    uploadkink: "#",
-    Heading: "employee-management-system",
-    detail:
-      "React-based frontend with Admin and Employee Dashboards for managing employees, tasks . It uses localstorage to store data .",
-    techStack: "React JavaScript",
-  },
-  {
-    gitlink: "https://github.com/Lucky-Sharma/PDF-Merger",
-    uploadkink: "#",
-    Heading: "PDF-Merger",
-    detail:
-      "A Web application that uses for PDF merging we upload PDF on the web application and it provide a merged PDF.",
-    techStack: "HTML, CSS, JavaScript, Express",
-  },
-];
+interface Repo {
+  id: number;
+  name: string;
+  description: string;
+  html_url: string;
+  homepage: string;
+  language: string;
+  fork: boolean;
+}
+
 export const Projects = () => {
+  const [projects, setProjects] = useState<Repo[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const res = await fetch("https://api.github.com/users/Lucky-Sharma/repos?sort=updated");
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data: Repo[] = await res.json();
+        // Filter out forked repositories
+        setProjects(data.filter((repo) => !repo.fork));
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchRepos();
+  }, []);
+
   return (
-    <div className="w-full px-4 sm:px-10">
+    <div className="w-full">
       <div className="flex items-center w-full pb-4">
         <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0] ">/projects</div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3 "></div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto mt-10">
-        {ProjectData.map((card, index) => (
-          <div key={index} className="flex justify-center">
-             <ProjectCard
-                gitlink={card.gitlink}
-                uploadkink={card.uploadkink}
-                Heading={card.Heading}
-                detail={card.detail}
-                techStack={card.techStack}
-              />
+
+      {loading ? (
+        <div className="flex items-center justify-center min-h-[300px]">
+          <div className="text-[#56ddc1] text-lg font-mono animate-pulse">
+            Fetching repositories from GitHub...
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-8 items-stretch">
+          {projects.map((repo) => {
+            const liveUrl = repo.homepage?.trim() || "";
+
+            return (
+              <div key={repo.id} className="w-full h-full flex">
+                <ProjectCard
+                  gitlink={repo.html_url}
+                  uploadkink={liveUrl}
+                  Heading={repo.name}
+                  detail={repo.description || "No description provided on GitHub."}
+                  techStack={repo.language || "Web Project"}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

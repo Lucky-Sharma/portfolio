@@ -1,6 +1,7 @@
 interface CompanyDetailsProps {
   companyPosition: string;
   companyName: string;
+  companyUrl: string;
   dates: string;
   details: string[];
 }
@@ -8,6 +9,7 @@ interface CompanyDetailsProps {
 export const CompanyDetails = ({
   companyPosition,
   companyName,
+  companyUrl,
   dates,
   details,
 }: CompanyDetailsProps) => {
@@ -16,7 +18,14 @@ export const CompanyDetails = ({
       <div>
         <div className="flex flex-col text-left sm:flex sm:flex-row gap-1">
           <div className="text-xl sm:text-3xl font-bold mb-2">{companyPosition} @</div>
-          <div className="text-xl sm:text-3xl font-bold mb-2 text-[#56ddc1]">{companyName}</div>
+          <a
+            href={companyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xl sm:text-3xl font-bold mb-2 text-[#56ddc1] hover:underline cursor-pointer"
+          >
+            {companyName}
+          </a>
         </div>
         <div>
           <div className="text-left text-lg sm:text-2xl">{dates}</div>
