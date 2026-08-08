@@ -14,7 +14,7 @@ export const Home = () => {
           I Create stuff sometimes.
         </div>
         <div className="text-base sm:text-xl max-w-[35rem] mt-2 text-[#5e6985] leading-relaxed px-2">
-          I'm a software engineer from Madhya Pradesh, India. I love building
+          I'm a software engineer from India. I love building
           things that scale — products and features that reach millions of
           people and make a real impact. I'm always excited to work on apps that
           grow fast and shape how people interact with technology.

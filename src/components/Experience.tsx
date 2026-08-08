@@ -4,31 +4,46 @@ interface dataType {
   id: number;
   companyPosition: string;
   companyName: string;
+  companyUrl: string;
   dates: string;
   details: string[];
 }
 const data: dataType[] = [
   {
     id: 1,
-    companyPosition: "Software Engineer Intern",
-    companyName: "DigiChum",
-    dates: "Jan 2025 - Mar 2025",
+    companyPosition: "Software Engineer (Intern)",
+    companyName: "MpOnline Limited",
+    companyUrl: "https://www.mponline.gov.in/Portal/AboutMPOnline.aspx",
+    dates: "May 2026 - Present",
     details: [
-      "Designed responsive frontend interfaces using modern web technologies (e.g., React, Tailwind CSS) to ensure cross-device compatibility",
-      "Developed and integrated RESTful APIs to handle data exchange between frontend and backend efficiently.",
-      "Collaborated closely with backend services to achieve seamless integration and consistent data flow.",
+      "Built and maintained backend services using FastAPI, integrating AI models into government digital service workflows.",
+      "Set up CI/CD pipelines using Microsoft Azure DevOps for automated builds, testing, and deployments, improving release consistency.",
+      "Wrote end-to-end test suites with Playwright to validate critical user flows, improving release confidence pre-deployment.",
+      "Collaborated with cross-functional teams on architecture reviews, applying DevOps best practices for API performance."
     ],
   },
   {
     id: 2,
-    companyPosition: "Associate Software Engineer",
-    companyName: "Gamma Edge PVT LTD.",
-    dates: "June 2025 - Present",
+    companyPosition: "Full Stack Developer",
+    companyName: "GammaEdge Technologies",
+    companyUrl: "https://gammaedge.io/",
+    dates: "Jun 2025 - Nov 2025",
     details: [
-      "Integrated Redux for efficient and scalable state management across multiple components.",
-      "Containerized MERN applications using Docker, ensuring consistent environments for development and deployment.",
-      "Deployed Docker containers on AWS EC2 instances for scalable cloud hosting.",
-      "Managed and stored Docker images securely using Amazon Elastic Container Registry (ECR).",
+      "Implemented Redux Toolkit state management, optimizing responsiveness and streamlining complex data handling for enterprise clients.",
+      "Orchestrated Docker containerization and AWS deployment (EC2, ECR), improving system reliability by 30% and accelerating release cycles.",
+      "Built and maintained RESTful APIs with Node.js and Express, enabling seamless frontend-backend communication."
+    ],
+  },
+  {
+    id: 3,
+    companyPosition: "Frontend Developer (Intern)",
+    companyName: "DigiChum Infotech Pvt. Ltd.",
+    companyUrl: "https://digichuminfotech.com/",
+    dates: "Feb 2025 - May 2025",
+    details: [
+      "Built responsive frontend interfaces that boosted user engagement by 15% on the company's finance platform.",
+      "Developed RESTful APIs that reduced backend processing time by 20%, improving scalability for financial operations.",
+      "Translated Figma mockups into pixel-perfect React components, ensuring cross-browser compatibility and consistent UX."
     ],
   },
 ];
@@ -56,7 +71,7 @@ export const Experience = () => {
   }, [currentSelect]);
 
   return (
-    <div className="h-full w-full px-4 sm:px-10">
+    <div className="h-full w-full">
       <div className="flex items-center w-full pb-4">
         <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0] whitespace-nowrap">/experience</div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3"></div>
@@ -75,32 +90,22 @@ export const Experience = () => {
             style={{ left: indicatorStyle.left, width: indicatorStyle.width }}
           />
 
-          <button
-            ref={(el) => { tabsRef.current[0] = el; }}
-            onClick={() => setCurrentSelect(1)}
-            className={`shrink-0 md:shrink text-center md:text-left text-xs sm:text-base px-3 md:px-6 py-3 md:py-4 rounded-t-md md:rounded-md cursor-pointer 
-              hover:bg-gray-800/50 transition-all duration-300 ease-in-out whitespace-nowrap
-              ${
-                currentSelect === 1
-                  ? "text-[#56ddc1] bg-gray-800/40"
-                  : "text-[#8791af]"
-              }`}
-          >
-            DigiChum PVT LTD.
-          </button>
-          <button
-            ref={(el) => { tabsRef.current[1] = el; }}
-            onClick={() => setCurrentSelect(2)}
-            className={`shrink-0 md:shrink text-center md:text-left text-xs sm:text-base px-3 md:px-6 py-3 md:py-4 rounded-t-md md:rounded-md cursor-pointer 
-              hover:bg-gray-800/50 transition-all duration-300 ease-in-out whitespace-nowrap
-              ${
-                currentSelect === 2
-                  ? "text-[#56ddc1] bg-gray-800/40"
-                  : "text-[#8791af]"
-              }`}
-          >
-            Gamma Edge PVT LTD.
-          </button>
+          {data.map((item, index) => (
+            <button
+              key={item.id}
+              ref={(el) => { tabsRef.current[index] = el; }}
+              onClick={() => setCurrentSelect(item.id)}
+              className={`shrink-0 md:shrink text-center md:text-left text-xs sm:text-base px-3 md:px-6 py-3 md:py-4 rounded-t-md md:rounded-md cursor-pointer 
+                hover:bg-gray-800/50 transition-all duration-300 ease-in-out whitespace-nowrap
+                ${
+                  currentSelect === item.id
+                    ? "text-[#56ddc1] bg-gray-800/40"
+                    : "text-[#8791af]"
+                }`}
+            >
+              {item.companyName}
+            </button>
+          ))}
         </div>
 
         <div className="relative w-full mt-4 md:mt-0">
@@ -121,6 +126,7 @@ export const Experience = () => {
                   <CompanyDetails
                     companyPosition={item.companyPosition}
                     companyName={item.companyName}
+                    companyUrl={item.companyUrl}
                     dates={item.dates}
                     details={item.details}
                   />

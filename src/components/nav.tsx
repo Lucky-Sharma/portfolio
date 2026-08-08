@@ -4,10 +4,11 @@ export const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex justify-between sticky top-0 z-50 bg-[#0a192f] p-6 px-4 md:px-6 items-center w-full">
-      <div className="font-bold">
-        <label>Lucky Sharma</label>
-      </div>
+    <div className="sticky top-0 z-50 bg-[#0a192f]/95 backdrop-blur-md py-4 px-4 sm:px-8 w-full border-b border-gray-800/40">
+      <div className="max-w-4xl mx-auto flex justify-between items-center w-full">
+        <div className="font-bold text-lg text-[#c6d0f0]">
+          <label className="cursor-pointer">Lucky Sharma</label>
+        </div>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex gap-8 font-bold items-center">
@@ -123,9 +124,8 @@ export const Nav = () => {
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`absolute top-full right-0 w-full bg-[#0a192f] p-6 shadow-lg flex flex-col md:hidden z-40 border-t border-gray-700 transform transition-all duration-300 origin-top ${
-          isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 h-0 p-0"
-        }`}
+        className={`absolute top-full right-0 w-full bg-[#0a192f] p-6 shadow-lg flex flex-col md:hidden z-40 border-t border-gray-700 transform transition-all duration-300 origin-top ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 h-0 p-0"
+          }`}
       >
         <a
           href="#Home"
@@ -222,6 +222,7 @@ export const Nav = () => {
           </a>
         </div>
       </div>
+    </div>
     </div>
   );
 };

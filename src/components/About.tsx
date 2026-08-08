@@ -1,7 +1,7 @@
 import pic from "../assets/pic.jpg";
 export const About = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col gap-4 px-4 sm:px-10">
+    <div className="w-full flex flex-col gap-6">
       <div className="flex items-center w-full pb-4">
         <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0] whitespace-nowrap">/ about me</div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3"></div>
@@ -59,11 +59,11 @@ export const About = () => {
             science , technologies and world affairs. I also enjoy reading.
           </span>
         </div>
-        <div className="hidden lg:block m-4 lg:m-7">
+        <div className="w-full lg:w-auto flex justify-center lg:block my-4 lg:my-0">
           <img
             src={pic}
             alt="profile pic"
-            className="w-64 h-64 sm:w-80 sm:h-80 lg:w-90 lg:h-90 rounded-lg object-cover transition duration-700 easy-out hover:scale-105"
+            className="w-64 sm:w-72 md:w-80 aspect-[3/4] rounded-2xl object-cover object-top border border-gray-700/80 shadow-2xl hover:border-[#56ddc1]/50 transition duration-500 ease-out hover:scale-105"
           />
         </div>
       </div>
