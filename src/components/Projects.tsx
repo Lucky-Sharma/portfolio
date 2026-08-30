@@ -35,8 +35,10 @@ export const Projects = () => {
   return (
     <div className="w-full">
       <div className="flex items-center w-full pb-4">
-        <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0] ">/projects</div>
-        <div className="flex-1 h-[1px] bg-gray-600 ml-3 "></div>
+        <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0]">
+          /projects
+        </div>
+        <div className="flex-1 h-[1px] bg-gray-600 ml-3"></div>
       </div>
 
       {loading ? (
