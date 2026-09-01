@@ -9,12 +9,8 @@ export const About = () => {
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
         <div className="max-w-xl flex flex-col text-[#8791af] text-justify">
           <p className="flex text-base sm:text-lg md:text-xl">
-            I am currently a Software Development Engineer at Gamma Edge,
-            working in the Software development sector under MERN team.
-            Previously, I have worked as a Software Engineer Intern at DigiChum,
-            where I contributed to developing web applications using MERN stack.
-            I have a strong foundation in computer science principles and a
-            passion for building efficient and scalable software solutions.
+            I am a Full Stack Developer with experience building scalable and efficient web applications using modern technologies such as React, Node.js, and TypeScript. I have a strong foundation in computer science principles, backend development, RESTful APIs, cloud deployments, and system performance optimization. I enjoy designing reliable software solutions, solving complex technical problems, and continuously exploring new technologies to build impactful and scalable products.
+
           </p>
           <p className="mt-4 text-base sm:text-lg md:text-xl">
             Here are a some technologies I have been working with:

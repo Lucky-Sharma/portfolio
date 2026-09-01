@@ -4,6 +4,7 @@ import { About } from "./About";
 import { Experience } from "./Experience";
 import { Projects } from "./Projects";
 import { ScrollReveal } from "./ScrollReveal";
+import { Footer } from "./Footer";
 
 const sections = [
   { id: "Home", name: "01. Home" },
@@ -34,7 +35,7 @@ export const Container = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col justify-center items-center w-full min-h-screen overflow-x-hidden">
+    <div className="relative flex flex-col justify-center items-center w-full min-h-screen">
       {/* Floating Scrollytelling Side Indicator (Desktop) */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-5 items-end pointer-events-auto">
         {sections.map((sec) => {
@@ -86,12 +87,15 @@ export const Container = () => {
           </ScrollReveal>
         </section>
 
-        <section id="Projects" className="min-h-screen w-full flex justify-center items-center py-16">
+        <section id="Projects" className="w-full flex justify-center items-start py-20">
           <ScrollReveal direction="up" className="w-full">
             <Projects />
           </ScrollReveal>
         </section>
       </div>
+
+      {/* Footer — full width */}
+      <Footer />
     </div>
   );
 };
