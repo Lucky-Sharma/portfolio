@@ -16,7 +16,7 @@ export const ProjectCard = ({
   const hasLiveLink = uploadkink && uploadkink !== "#";
 
   return (
-    <div className="bg-[#112240] w-full h-full p-6 rounded-xl border border-gray-800/80 hover:border-[#56ddc1]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between shadow-xl group">
+    <div className="bg-[#112240] w-full h-full p-4 sm:p-6 rounded-xl border border-gray-800/80 hover:border-[#56ddc1]/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between shadow-xl group">
       <div>
         <div className="flex items-center justify-between mb-4">
           <div className="p-2 rounded-lg bg-gray-800/50 text-[#56ddc1]">
@@ -84,7 +84,7 @@ export const ProjectCard = ({
           </div>
         </div>
 
-        <h3 className="text-xl font-bold text-[#c6d0f0] group-hover:text-[#56ddc1] transition-colors mb-3 text-left capitalize">
+        <h3 className="text-lg sm:text-xl font-bold text-[#c6d0f0] group-hover:text-[#56ddc1] transition-colors mb-3 text-left capitalize break-words">
           {Heading.replace(/[-_]/g, " ")}
         </h3>
 

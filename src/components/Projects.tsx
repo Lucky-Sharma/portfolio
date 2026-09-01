@@ -66,9 +66,9 @@ export const Projects = () => {
   }, [fetchRepos]);
 
   return (
-    <div className="w-full">
+    <div className="w-full pb-10">
       <div className="flex items-center w-full pb-4">
-        <div className="font-bold text-3xl sm:text-4xl text-[#c6d0f0]">
+        <div className="font-bold text-2xl sm:text-3xl md:text-4xl text-[#c6d0f0]">
           /projects
         </div>
         <div className="flex-1 h-[1px] bg-gray-600 ml-3"></div>
@@ -126,7 +126,7 @@ export const Projects = () => {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-8 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full mt-6 items-stretch">
           {projects.map((repo) => {
             const liveUrl = repo.homepage?.trim() || "";
             return (
